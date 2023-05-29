@@ -65,7 +65,7 @@ set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left>]])
 set("n", "<leader>e", vim.diagnostic.open_float)
 set("n", "<leader>q", vim.diagnostic.setloclist)
 
--- Debugger
+set("n", "<leader>wk", ":WhichKey<CR>", opts)
 
 -- Terminal Mode
 set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit Terminal Mode", noremap = true })

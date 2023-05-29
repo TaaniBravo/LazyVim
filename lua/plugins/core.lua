@@ -5,4 +5,11 @@ return {
       colorscheme = "tokyonight",
     },
   },
+  {
+    "folke/which-key.nvim",
+    keys = {
+      "<leader>wk",
+      ":WhichKey<CR>",
+    },
+  },
 }
