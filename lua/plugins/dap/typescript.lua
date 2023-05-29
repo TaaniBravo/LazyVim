@@ -1,4 +1,6 @@
 -- Typescript DAP setup
+local DEBUGGER_PATH = require("mason-registry").get_package("js-debug-adapter"):get_install_path()
+  .. "/js-debug/src/dapDebugServer.js"
 local M = {}
 
 M.setup = function()
@@ -7,18 +9,18 @@ M.setup = function()
     require("dap").adapters["pwa-node"] = {
       type = "server",
       host = "localhost",
-      port = "${port}",
+      port = "8123",
       executable = {
         command = "node",
         -- 💀 Make sure to update this path to point to your installation
         args = {
-          require("mason-registry").get_package("js-debug-adapter"):get_install_path()
-            .. "/js-debug/src/dapDebugServer.js",
-          "${port}",
+          DEBUGGER_PATH,
+          "8123",
         },
       },
     }
   end
+
   for _, language in ipairs({ "typescript", "javascript" }) do
     if not dap.configurations[language] then
       dap.configurations[language] = {
@@ -28,6 +30,7 @@ M.setup = function()
           name = "Launch file",
           program = "${file}",
           cwd = "${workspaceFolder}",
+          console = "integratedTerminal",
         },
         {
           type = "pwa-node",
@@ -35,6 +38,22 @@ M.setup = function()
           name = "Attach",
           processId = require("dap.utils").pick_process,
           cwd = "${workspaceFolder}",
+          console = "integratedTerminal",
+        },
+        {
+          type = "pwa-node",
+          request = "launch",
+          name = "Debug Jest Tests",
+          -- trace = true, -- include debugger info
+          runtimeExecutable = "node",
+          runtimeArgs = {
+            "./node_modules/jest/bin/jest.js",
+            "--runInBand",
+          },
+          rootPath = "${workspaceFolder}",
+          cwd = "${workspaceFolder}",
+          console = "integratedTerminal",
+          internalConsoleOptions = "neverOpen",
         },
       }
     end

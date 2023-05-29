@@ -17,16 +17,14 @@ set("n", "<C-Down>", ":resize +2<CR>", opts)
 set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- Navigate buffers
+-- Buffers
 set("n", "<S-l>", ":bnext<CR>", opts)
 set("n", "<S-h>", ":bprevious<CR>", opts)
+set("n", "<S-q>", ":bdelete<CR>", { desc = "Close current buffer.", noremap = true, silent = true })
+set("n", "<leader><S-q>", ":silent %bd|e#|bd#<CR>", { desc = "Close all but current buffer." })
 
 -- Clear highlights
 set("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-
--- Close buffers
-set("n", "<S-q>", ":bd<CR>", opts)
-set("n", "<leader><S-q>", ":silent %bd|e#|bd#<CR>", { desc = "Close all but current buffer." })
 
 -- Indenting
 set("n", "<Tab>", ">>_", { desc = "Indent line", noremap = true })
