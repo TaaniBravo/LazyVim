@@ -13,13 +13,16 @@ return {
         local dapui = require("dapui")
         dapui.setup(opts)
         dap.listeners.after.event_initialized["dapui_config"] = function()
+          vim.cmd("Neotree close")
           dapui.open({})
         end
         dap.listeners.before.event_terminated["dapui_config"] = function()
           dapui.close({})
+          vim.cmd("Neotree show")
         end
         dap.listeners.before.event_exited["dapui_config"] = function()
           dapui.close({})
+          vim.cmd("Neotree show")
         end
       end,
     },

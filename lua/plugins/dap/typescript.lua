@@ -9,13 +9,13 @@ M.setup = function()
     require("dap").adapters["pwa-node"] = {
       type = "server",
       host = "localhost",
-      port = "8123",
+      port = "${port}",
       executable = {
         command = "node",
         -- 💀 Make sure to update this path to point to your installation
         args = {
           DEBUGGER_PATH,
-          "8123",
+          "${port}",
         },
       },
     }
