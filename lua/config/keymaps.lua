@@ -20,7 +20,15 @@ set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Buffers
 set("n", "<S-l>", ":bnext<CR>", opts)
 set("n", "<S-h>", ":bprevious<CR>", opts)
-set("n", "<S-q>", ":bdelete<CR>", { desc = "Close current buffer.", noremap = true, silent = true })
+set("n", "<S-q>", function()
+  local Util = require("lazyvim.util")
+  if Util.has("mini.bufremove") then
+    print("mini.bufremove")
+    require("mini.bufremove").delete(vim.fn.bufnr(), false)
+  else
+    vim.cmd("bd")
+  end
+end, { desc = "Close current buffer.", noremap = true, silent = true })
 set("n", "<leader><S-q>", ":silent %bd|e#|bd#<CR>", { desc = "Close all but current buffer." })
 
 -- Clear highlights

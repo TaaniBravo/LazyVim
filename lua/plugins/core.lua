@@ -8,8 +8,7 @@ return {
   {
     "folke/which-key.nvim",
     keys = {
-      "<leader>wk",
-      ":WhichKey<CR>",
+      { "<leader>wk", ":WhichKey<CR>", desc = "WhichKey" },
     },
   },
 }
