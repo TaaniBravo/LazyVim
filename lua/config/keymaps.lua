@@ -42,8 +42,8 @@ set("n", "<C-u>", "<C-u>zz", { desc = "Better page up. Not disorientating.", nor
 set("n", "<C-d>", "<C-d>zz", { desc = "Better page down. Not disorientating.", noremap = true })
 
 -- Editor tricks
-set("v", "J", ":m '>+1<CR>gv=gv")
-set("v", "K", ":m '<-2<CR>gv=gv")
+set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move visual block up" })
+set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move visual block down" })
 set("n", "n", "nzzzv")
 set("n", "N", "Nzzzv")
 set("i", "<C-k>", "<Up>", { desc = "Fast upward cursor movement in INSERT MODE." })

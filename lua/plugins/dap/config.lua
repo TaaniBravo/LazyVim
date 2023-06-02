@@ -1,4 +1,15 @@
 return function()
+  local dap = require("dap")
+
+  -- Use iTerm as external_terminal for macOS.
+  if vim.loop.os_uname().sysname == "Darwin" then
+    dap.defaults.fallback.external_terminal = {
+      command = "/Applications/iTerm.app/Contents/MacOS/iTerm2",
+      args = { "-e" },
+    }
+    dap.defaults.fallback.force_external_terminal = true
+  end
+
   local Config = require("lazyvim.config")
   vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 

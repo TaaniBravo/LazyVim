@@ -30,6 +30,7 @@ M.setup = function()
           name = "Launch file",
           program = "${file}",
           cwd = "${workspaceFolder}",
+          skipFiles = { "<node_internals>/**" },
           console = "integratedTerminal",
         },
         {
@@ -38,7 +39,6 @@ M.setup = function()
           name = "Attach",
           processId = require("dap.utils").pick_process,
           cwd = "${workspaceFolder}",
-          console = "integratedTerminal",
         },
         {
           type = "pwa-node",

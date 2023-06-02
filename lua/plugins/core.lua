@@ -11,4 +11,12 @@ return {
       { "<leader>wk", ":WhichKey<CR>", desc = "WhichKey" },
     },
   },
+  {
+    "echasnovski/mini.comment",
+    enabled = true,
+  },
+  {
+    "echasnovski/mini.animate",
+    enabled = false,
+  },
 }

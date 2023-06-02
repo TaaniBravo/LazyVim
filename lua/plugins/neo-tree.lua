@@ -1,6 +1,7 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   -- enabled = false,
+  lazy = false,
   opts = {
     default_component_configs = {
       icon = {

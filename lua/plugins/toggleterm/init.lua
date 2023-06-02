@@ -20,7 +20,6 @@ return {
     config = function(_, opts)
       require("toggleterm").setup(opts)
       require("plugins.toggleterm.util").floating_term()
-      require("plugins.toggleterm.util").lazygit()
     end,
   },
 }
