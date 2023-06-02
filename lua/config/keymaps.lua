@@ -23,7 +23,6 @@ set("n", "<S-h>", ":bprevious<CR>", opts)
 set("n", "<S-q>", function()
   local Util = require("lazyvim.util")
   if Util.has("mini.bufremove") then
-    print("mini.bufremove")
     require("mini.bufremove").delete(vim.fn.bufnr(), false)
   else
     vim.cmd("bd")
