@@ -20,6 +20,7 @@ local M = {
     "b0o/SchemaStore.nvim",
     version = false, -- last release is way too old
   },
+  { "m-demare/hlargs.nvim", config = true },
   { "jose-elias-alvarez/typescript.nvim" },
   setup = require("plugins.lsp.setup"),
 }
