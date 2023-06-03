@@ -2,7 +2,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "catppuccin",
     },
   },
   {
@@ -10,10 +10,6 @@ return {
     keys = {
       { "<leader>wk", ":WhichKey<CR>", desc = "WhichKey" },
     },
-  },
-  {
-    "echasnovski/mini.comment",
-    enabled = true,
   },
   {
     "echasnovski/mini.animate",
