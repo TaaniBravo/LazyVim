@@ -2,6 +2,7 @@
 -- General keymaps. Not plugin specific.
 --]]
 local opts = { remap = false, silent = true }
+local Util = require("lazyvim.util")
 local set = vim.keymap.set
 vim.g.mapleader = " "
 
@@ -21,7 +22,6 @@ set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 set("n", "<S-l>", ":bnext<CR>", opts)
 set("n", "<S-h>", ":bprevious<CR>", opts)
 set("n", "<S-q>", function()
-  local Util = require("lazyvim.util")
   if Util.has("mini.bufremove") then
     require("mini.bufremove").delete(vim.fn.bufnr(), false)
   else
@@ -50,10 +50,14 @@ set("i", "<C-k>", "<Up>", { desc = "Fast upward cursor movement in INSERT MODE."
 set("i", "<C-j>", "<Down>", { desc = "Fast downward cursor movement in INSERT MODE." })
 set("i", "<C-h>", "<Left>", { desc = "Fast leftward cursor movement in INSERT MODE." })
 set("i", "<C-l>", "<Right>", { desc = "Fast rightward cursor movement in INSERT MODE." })
-set("n", "<C-k>", "<C-w>k", { desc = "Fast upward pane movement.", remap = false })
-set("n", "<C-j>", "<C-w>j", { desc = "Fast downward pane movement.", remap = false })
-set("n", "<C-h>", "<C-w>h", { desc = "Fast leftward pane movement.", remap = false })
-set("n", "<C-l>", "<C-w>l", { desc = "Fast rightward pane movement.", remap = false })
+
+if not Util.has("vim-tmux-navigator") then
+  print("tmux-nav not found.")
+  set("n", "<C-k>", "<C-w>k", { desc = "Fast upward pane movement.", remap = false })
+  set("n", "<C-j>", "<C-w>j", { desc = "Fast downward pane movement.", remap = false })
+  set("n", "<C-h>", "<C-w>h", { desc = "Fast leftward pane movement.", remap = false })
+  set("n", "<C-l>", "<C-w>l", { desc = "Fast rightward pane movement.", remap = false })
+end
 
 -- Use clipboard
 set("n", "<leader>y", '"+yy', { desc = "Copy to Clipboard" })
