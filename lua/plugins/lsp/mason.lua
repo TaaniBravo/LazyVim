@@ -5,5 +5,6 @@ return {
     table.insert(opts.ensure_installed, "pyright")
     table.insert(opts.ensure_installed, "js-debug-adapter")
     table.insert(opts.ensure_installed, "prettierd")
+    table.insert(opts.ensure_installed, "autopep8")
   end,
 }
