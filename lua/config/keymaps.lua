@@ -52,11 +52,16 @@ set("i", "<C-h>", "<Left>", { desc = "Fast leftward cursor movement in INSERT MO
 set("i", "<C-l>", "<Right>", { desc = "Fast rightward cursor movement in INSERT MODE." })
 
 if not Util.has("vim-tmux-navigator") then
-  print("tmux-nav not found.")
   set("n", "<C-k>", "<C-w>k", { desc = "Fast upward pane movement.", remap = false })
   set("n", "<C-j>", "<C-w>j", { desc = "Fast downward pane movement.", remap = false })
   set("n", "<C-h>", "<C-w>h", { desc = "Fast leftward pane movement.", remap = false })
   set("n", "<C-l>", "<C-w>l", { desc = "Fast rightward pane movement.", remap = false })
+else
+  -- Have to set these here otherwise fighting LazyVim defaults.
+  set("n", "<C-h>", ":TmuxNavigateLeft<CR>", { desc = "Fast leftward pane movement.", remap = false, silent = true })
+  set("n", "<C-j>", ":TmuxNavigateDown<CR>", { desc = "Fast downward pane movement.", remap = false, silent = true })
+  set("n", "<C-k>", ":TmuxNavigateUp<CR>", { desc = "Fast upward pane movement.", remap = false, silent = true })
+  set("n", "<C-l>", ":TmuxNavigateRight<CR>", { desc = "Fast rightward pane movement.", remap = false, silent = true })
 end
 
 -- Use clipboard
